@@ -9,11 +9,13 @@ public class Player : MonoBehaviour
     public float rotationSpeed = 360f;
 
     CharacterController characterController;
+    Animator animator;
 
     // Use this for initialization
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>(); // Animator 컴포넌트 가져옴
     }
 
     // Update is called once per frame
@@ -32,5 +34,41 @@ public class Player : MonoBehaviour
         }
         characterController.Move(direction * moveSpead * Time.deltaTime);
         // Move()를 이용해 이동, 충돌 처리를 할 수 있고 속도 값도 얻을 수 있다.
+
+        animator.SetFloat("speed", characterController.velocity.magnitude);
+
+        if (GameObject.FindGameObjectsWithTag("Dot").Length == 0)
+        {
+            Application.LoadLevel("Win");
+        }
     }
+
+    // 게임 오브젝트가 트리거와 충돌할 때 호출
+    void OnTriggerEnter(Collider other) // other: Player와 충돌이 난 다른 object
+    {
+
+        if (other.tag == "Dot")
+        {
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "Enemy")
+        {
+            Application.LoadLevel("Lose");
+        }
+    }
+
+    /*
+    
+    void onTriggerEnter(Collider other) 
+    {
+        // Destroy(other.gameObject);  // 없애버린다
+        if (other.tag == "Dot")
+        {
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "Enemy")
+        {
+            Application.LoadLevel("Lose");
+        }
+    }*/
 }
