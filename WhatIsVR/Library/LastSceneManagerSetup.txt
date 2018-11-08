@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/bullet.unity
-  isLoaded: 1
-  isActive: 1
