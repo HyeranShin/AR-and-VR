@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class rayCast_lancekun : MonoBehaviour {
 
-    //Animator anim;
+    Animator anim;
+
+    public int atkPnt;  // 공격력
+    public int hltPnt;  // 체력
+    float timeElapsed;
 
     // Use this for initialization
     void Start () {
-        //anim = transform.GetComponent<Animator>();
+        anim = transform.GetComponent<Animator>();
+
+        atkPnt = 200;
+        hltPnt = 1000;
+        timeElapsed = 0;
     }
 	
 	// Update is called once per frame
@@ -27,12 +35,26 @@ public class rayCast_lancekun : MonoBehaviour {
             Debug.Log("hit_lancekun");
             // 만일 RayCast가 어떤 물체에 맞는다면 hit라고 출력
 
-            //anim.SetBool("isHit", true);
+           anim.SetBool("isHit", true);
             // 충돌이 발생할 경우 parameter 값을 변경
+
+            timeElapsed = timeElapsed + Time.deltaTime; // 초 단위로 지나가는 시간을 체크
+            if (timeElapsed >= 3)    // 3초에 한번씩 공격
+            {
+                hit.transform.GetComponent<rayCast_lancekun>().hltPnt =
+                    hit.transform.GetComponent<rayCast_lancekun>().hltPnt - atkPnt;
+                Debug.Log("랜스군의 체력: " + hltPnt);
+                timeElapsed = 0;
+            }
         }
         else
         {
-            //anim.SetBool("isHit", false);
+            anim.SetBool("isHit", false);
+        }
+
+        if (hltPnt <= 0)
+        {
+            anim.SetBool("isDead", true);
         }
     }
 }

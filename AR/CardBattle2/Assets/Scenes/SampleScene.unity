@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 528637982}
   - component: {fileID: 528637988}
   - component: {fileID: 528637989}
+  - component: {fileID: 528637990}
   m_Layer: 0
   m_Name: ImageTarget_lancekun
   m_TagString: Untagged
@@ -310,7 +311,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 528637981}
-  m_Mesh: {fileID: 1925446196}
+  m_Mesh: {fileID: 2107840797}
 --- !u!23 &528637983
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -326,7 +327,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 1312220483}
+  - {fileID: 1557382015}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -412,6 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edaaecfe2fb5c75418dbec9392bc6f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atkPnt: 0
+  hltPnt: 0
 --- !u!65 &528637989
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -424,6 +427,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.9, z: 0.7}
   m_Center: {x: 0, y: 0.45, z: 0}
+--- !u!95 &528637990
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 528637981}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3149f649a799f1d4bb4451b9845a343d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &593366701
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +474,7 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 593366701}
-  m_Mesh: {fileID: 1599582950}
+  m_Mesh: {fileID: 1603688655}
 --- !u!23 &593366703
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -469,7 +490,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 834126190}
+  - {fileID: 1847269628}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -555,6 +576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b205ceae7e20b0c44af2769aefdb5d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atkPnt: 0
+  hltPnt: 0
 --- !u!65 &593366709
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -585,33 +608,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!21 &834126190
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 'card_zombieMaterial
-
-    15022'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0c9bdae16eb046289d3c8b8655732ece, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1001 &881439284
 Prefab:
   m_ObjectHideFlags: 0
@@ -655,7 +651,8 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11100000, guid: e1a63f09a21e83d4d8353b40eeb98429, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e1a63f09a21e83d4d8353b40eeb98429, type: 3}
   m_IsPrefabAsset: 0
 --- !u!1001 &1014934617
@@ -781,6 +778,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.9933406
       objectReference: {fileID: 0}
+    - target: {fileID: 198482, guid: 6b9bfb73d6796d3428598337f0d0aa6e, type: 2}
+      propertyPath: m_Name
+      value: robot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9bfb73d6796d3428598337f0d0aa6e, type: 2}
   m_IsPrefabAsset: 0
@@ -794,7 +795,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 413756, guid: 6b9bfb73d6796d3428598337f0d0aa6e,
     type: 2}
   m_PrefabInternal: {fileID: 1014934617}
---- !u!21 &1312220483
+--- !u!1 &1142382798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100100, guid: e1a63f09a21e83d4d8353b40eeb98429,
+    type: 3}
+  m_PrefabInternal: {fileID: 881439284}
+--- !u!95 &1142382799
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1142382798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3149f649a799f1d4bb4451b9845a343d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!21 &1557382015
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -802,7 +826,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: 'card_lancekunMaterial
 
-    15008'
+    12116'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -821,12 +845,12 @@ Material:
     m_Floats: []
     m_Colors:
     - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
---- !u!43 &1599582950
+--- !u!43 &1603688655
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ImageTargetMesh15012
+  m_Name: ImageTargetMesh12124
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -976,12 +1000,39 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
---- !u!43 &1925446196
+--- !u!21 &1847269628
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 'card_zombieMaterial
+
+    12134'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 0c9bdae16eb046289d3c8b8655732ece, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+--- !u!43 &2107840797
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: ImageTargetMesh14998
+  m_Name: ImageTargetMesh12106
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
